@@ -1,3 +1,5 @@
+import assert from "assert";
+
 interface Configuration {
     apiGatewayBaseUrl: String,
 }
@@ -28,6 +30,9 @@ const configurations: Configurations = {
 
 type Stage = "dev" | "stg" | "prd"
 
-export default (stage: Stage) => {
+const isValidStage = (value: String): value is Stage => ["dev", "stg", "prd"].includes(value as any);
+
+export default (stage: String): Configuration => {
+    assert(isValidStage(stage), Error(`Stage: ${stage} is invalid.`))
     return configurations[stage];
 };
