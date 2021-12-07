@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import { Context } from '../index';
 
 const GroupList = () => {
+  const value = useContext(Context);
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <ListItemButton>
